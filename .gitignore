@@ -1,0 +1,7 @@
+*.test
+*.out
+/philips-wiz-bulb-mcp
+/dist/
+.vscode/
+.idea/
+.DS_Store
