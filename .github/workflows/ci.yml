@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
-        with: { go-version: "1.23" }
+        with: { go-version: "stable" }
       - run: go vet ./...
       - run: go test ./... -count=1
       - name: Smoke test stdio
@@ -27,14 +27,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
-        with: { go-version: "1.23" }
-      - name: Install staticcheck (pinned toolchain)
-        run: go install honnef.co/go/tools/cmd/staticcheck@latest
-        env:
-          GOTOOLCHAIN: local
+        with: { go-version: "stable" }
+      - run: go install honnef.co/go/tools/cmd/staticcheck@latest
       - run: staticcheck ./...
-        env:
-          GOTOOLCHAIN: local
 
   gitleaks:
     runs-on: ubuntu-latest
